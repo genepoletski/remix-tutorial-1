@@ -7,6 +7,10 @@ import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 import invariant from "tiny-invariant";
 
+const delay = async (msec: number) => {
+  return new Promise((resolve) => setTimeout(resolve, msec));
+}
+
 type ContactMutation = {
   id?: string;
   first?: string;
@@ -79,6 +83,7 @@ export async function createEmptyContact() {
 }
 
 export async function getContact(id: string) {
+  await delay(1000);
   return fakeContacts.get(id);
 }
 
